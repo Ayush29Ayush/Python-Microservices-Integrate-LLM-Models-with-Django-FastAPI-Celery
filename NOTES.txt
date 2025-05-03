@@ -19,7 +19,8 @@
 13. Create a new file in the django_app folder called celery.py
 14. In __init__.py add: from .celery import app as celery_app 
 
-15. Now inside the project folder, create a utils folder and all __init__.py and github.py
+15. Now inside the project folder, create a utils folder and all __init__.py, github.py, prompts.py, ai_agent.py
+16. Store API keys in .env file
 
 #TODO => List of Github APIs:
 https://api.github.com/
@@ -29,4 +30,10 @@ https://api.github.com/
 2. https://api.github.com/repos/boxabhi/MyCurrency/contents/
 3. https://api.github.com/repos/boxabhi/MyCurrency/contents/README.md
 
+4. https://github.com/boxabhi/MyCurrency/
+
 Here the content in the response is encoded so we have to decode it to base64 to get the actual content.
+
+17. pip install redis decouple eventlet (https://docs.celeryq.dev/en/stable/userguide/concurrency/eventlet.html)
+18. Command to run: celery -A django_app.celery worker -l info -P eventlet -E
+19. Write DRF class based views and set urls accordingly.
