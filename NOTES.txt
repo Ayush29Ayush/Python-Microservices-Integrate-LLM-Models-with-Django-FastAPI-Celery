@@ -1,0 +1,32 @@
+#! NOTES AND STEPS TAKEN
+
+#TODO => Refer => Microservice Architecture Diagram
+
+0. python -m venv venv 
+1. venv\Scripts\activate
+2. pip install "fastapi[standard]"
+3. pip freeze > requirements.txt
+4. Create a fastapi_app folder with __init__.py and main.py
+5. cd fastapi_app
+6. To run the server: fastapi dev main.py
+7. You can make api calls from "http://localhost:8000/docs" or using postman
+
+8. pip install Django djangorestframework 
+9. django-admin startproject django_app 
+10. cd django_app
+11. python manage.py startapp home
+12. pip install celery
+13. Create a new file in the django_app folder called celery.py
+14. In __init__.py add: from .celery import app as celery_app 
+
+15. Now inside the project folder, create a utils folder and all __init__.py and github.py
+
+#TODO => List of Github APIs:
+https://api.github.com/
+
+#! SAMPLE GITHUB API URLS:
+1. https://api.github.com/repos/boxabhi/MyCurrency/pulls/1/files
+2. https://api.github.com/repos/boxabhi/MyCurrency/contents/
+3. https://api.github.com/repos/boxabhi/MyCurrency/contents/README.md
+
+Here the content in the response is encoded so we have to decode it to base64 to get the actual content.
