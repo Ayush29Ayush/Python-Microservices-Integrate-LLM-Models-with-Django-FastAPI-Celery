@@ -37,3 +37,10 @@ Here the content in the response is encoded so we have to decode it to base64 to
 17. pip install redis decouple eventlet (https://docs.celeryq.dev/en/stable/userguide/concurrency/eventlet.html)
 18. Command to run: celery -A django_app.celery worker -l info -P eventlet -E
 19. Write DRF class based views and set urls accordingly.
+
+20. Now, we again go back to fastapi_app's main.py to utilize these django urls which will call the views to invoke celery tasks.
+
+COMMANDS TO RUN:
+1. celery -A django_app.celery worker -l info -P eventlet -E
+2. python manage.py runserver 0.0.0.0:8001
+3. fastapi dev main.py
