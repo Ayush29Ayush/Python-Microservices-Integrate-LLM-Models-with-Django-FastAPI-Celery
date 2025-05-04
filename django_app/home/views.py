@@ -21,7 +21,7 @@ class StartTaskAPIView(APIView):
             return Response({"error": "repo_url and pr_number are required"},status=status.HTTP_400_BAD_REQUEST)
 
         task = analyze_repo_task.delay(repo_url, pr_number, github_token)
-        return Response({"task_id": task.id, "status": "Task started"},status=status.HTTP_202_ACCEPTED)
+        return Response({"task_id": task.id, "status": "Task started"}, status=status.HTTP_200_OK)
 
 
 class TaskStatusAPIView(APIView):
@@ -31,7 +31,7 @@ class TaskStatusAPIView(APIView):
     """
     def get(self, request, task_id, *args, **kwargs):
         result = AsyncResult(task_id)
-        data = {"task_id": task_id, "status": result.state}
+        data = {"task_id": task_id, "status": result.state, "result": result.result}
 
         if result.state == "SUCCESS":
             data["result"] = result.result

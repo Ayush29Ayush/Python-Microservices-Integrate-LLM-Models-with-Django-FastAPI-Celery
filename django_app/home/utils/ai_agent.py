@@ -107,8 +107,4 @@ def analyze_pr(repo_url, pr_number, github_token=None):
         exc_type, exc_obj, exc_tb = sys.exc_info()
         fname = os.path.split(exc_tb.tb_frame.f_code.co_filename)[1]
         print(exc_type, fname, exc_tb.tb_lineno)
-        return {
-            "task_id": task_id,
-            "status": "error",
-            "message": f"{exc_type, fname, exc_tb.tb_lineno,e}",
-        }
+        return {"task_id": task_id,"status": "error","message": f"{exc_type, fname, exc_tb.tb_lineno,e}"}
